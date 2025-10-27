@@ -1,70 +1,38 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    margin: 0;
-    padding: 0;
+:root{
+  --bg:#f7f7fb; --card:#fff; --text:#0f172a; --muted:#475569; --accent:#2563eb;
+  --table:#e2e8f0; --hover:#eef2ff;
+}
+body.dark{
+  --bg:#0b1220; --card:#0f172a; --text:#e5e7eb; --muted:#9ca3af; --accent:#60a5fa;
+  --table:#1f2937; --hover:#111827;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:16px/1.55 system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--text)}
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.topbar{
+  position:sticky; top:0; z-index:10;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:.8rem 1rem; background:var(--card); border-bottom:1px solid var(--table);
 }
+.controls{display:flex; gap:.5rem; align-items:center}
+.controls input,.controls select{
+  padding:.45rem .6rem; border:1px solid var(--table); background:var(--card); color:var(--text); border-radius:8px;
+}
+.controls button{
+  padding:.45rem .7rem; border:1px solid var(--table); background:var(--card); color:var(--text); border-radius:8px; cursor:pointer;
+}
+.controls button[aria-pressed="true"]{background:var(--accent); color:#fff; border-color:transparent}
 
-#search {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-    margin-right: 10px;
-}
+.container{max-width:1100px;margin:1rem auto;padding:0 1rem}
+.table-wrap{background:var(--card); border:1px solid var(--table); border-radius:12px; overflow:auto}
+table{width:100%; border-collapse:collapse}
+th,td{padding:.6rem .75rem; border-bottom:1px solid var(--table); text-align:left; white-space:nowrap}
+thead th{position:relative; font-weight:600; color:var(--muted); cursor:pointer}
+tbody tr:hover{background:var(--hover)}
+th.sort-asc::after{content:" ▲"; color:var(--accent)}
+th.sort-desc::after{content:" ▼"; color:var(--accent)}
 
-#team-filter {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 150px;
-}
-
-.table-filters {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    cursor: pointer;
-}
-
-.dark-mode {
-    background-color: #333;
-    color: #f4f4f4;
-}
-
-.dark-mode table {
-    border-color: #555;
-}
-
-.dark-mode th,
-.dark-mode td {
-    border-color: #555;
-}
+.badge{display:inline-block; padding:.12rem .45rem; border-radius:999px; border:1px solid var(--table); font-size:.82rem}
+.footer{text-align:center; color:var(--muted); padding:1rem}
