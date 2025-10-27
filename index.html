@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBA Stats</title>
-    <link rel="stylesheet" href="styles.css">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NBA Player Stats Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-    <div class="container">
-        <header>
-            <h1>NBA Player Stats</h1>
-            <button id="dark-mode-toggle">Toggle Dark Mode</button>
-        </header>
+  <header class="topbar">
+    <h1>NBA Player Stats</h1>
 
-        <search class="table-filters">
-            <input type="text" id="search" placeholder="Search players...">
-            <select id="team-filter">
-                <option value="all">All</option>
-                <!-- Teams will be populated in JS -->
-            </select>
-        </search>
-
-        <table id="player-stats">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                    <th>Rebounds</th>
-                    <th>Assists</th>
-                </tr>
-            </thead>
-            <tbody id="player-rows">
-                <!-- Rows will be populated in JS -->
-            </tbody>
-        </table>
+    <div class="controls">
+      <input id="searchInput" type="search" placeholder="Search by player name…" />
+      <select id="filterSelect">
+        <option value="all">All Positions</option>
+        <option value="G">Guard (G)</option>
+        <option value="F">Forward (F)</option>
+        <option value="C">Center (C)</option>
+      </select>
+      <button id="darkToggle" aria-pressed="false">🌙 Dark</button>
     </div>
-    <script src="script.js"></script>
-</body>
+  </header>
 
+  <main class="container">
+    <section class="table-wrap">
+      <table id="playersTable" class="stats">
+        <thead id="tableHead">
+          <tr>
+            <th data-key="name">Player</th>
+            <th data-key="team">Team</th>
+            <th data-key="pos">Pos</th>
+            <th data-key="ppg" data-type="number">PPG</th>
+            <th data-key="apg" data-type="number">APG</th>
+            <th data-key="rpg" data-type="number">RPG</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"><!-- populated by JS --></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 CPIT-405 — Lab 05</footer>
+
+  <!-- يفترض أن ملف البيانات يعرّف players[] أو data.players -->
+  <!-- <script src="data.js"></script>  (موجود في الريبو) -->
+  <script src="script.js"></script>
+</body>
 </html>
